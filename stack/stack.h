@@ -1,5 +1,5 @@
-#ifndef __STACK__
-#define __STACK__
+#ifndef __STACK_H__
+#define __STACK_H__
 
 
 #define STACK_SIZE_MAX  100

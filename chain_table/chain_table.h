@@ -1,5 +1,5 @@
-#ifndef __CHAIN_TABLE__
-#define __CHAIN_TABLE__
+#ifndef __CHAIN_TABLE_H__
+#define __CHAIN_TABLE_H__
 
 // structures
 // struct Node;

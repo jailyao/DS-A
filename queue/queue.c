@@ -45,29 +45,28 @@ int QueueFull(Queue Q) {
 }
 
 int GetHead(Queue Q, EleType *E) {
-    if (!QueueEmpty(Q)) {
-        *E = Q->data[Q->head];
-        return 1;
-    }
-    return 0;
+    if (QueueEmpty(Q))
+        return 0;
+    *E = Q->data[Q->head];
+    return 1;
 }
 
 int EnQueue(Queue Q, EleType E) {
-    if (!QueueFull(Q)) {
-        Q->data[Q->tail++] = E;
-        Q->flag = INSERT;
-        return 1;
-    }
-    return 0;
+    if (QueueFull(Q))
+        return 0;
+    Q->data[Q->tail] = E;
+    Q->tail = (Q->tail + 1) % MAX_QUEUE_SIZE;
+    Q->flag = INSERT;
+    return 1;
 }
 
 int DeQueue(Queue Q, EleType *E) {
-    if (!QueueEmpty(Q)) {
-        *E = Q->data[Q->head++];
-        Q->flag = DELETE;
-        return 1;
-    }
-    return 0;
+    if (QueueEmpty(Q))
+        return 0;
+    *E = Q->data[Q->head];
+    Q->head = (Q->head + 1) % MAX_QUEUE_SIZE;
+    Q->flag = DELETE;
+    return 1;
 }
 
 int QueueLength(Queue Q) {
